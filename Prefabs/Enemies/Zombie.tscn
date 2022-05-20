@@ -1,0 +1,367 @@
+[gd_scene load_steps=15 format=2]
+
+[ext_resource path="res://Prefabs/Enemies/Sprites/zoimbie1_hold.png" type="Texture" id=1]
+[ext_resource path="res://Prefabs/Enemies/Enemy_Body.gd" type="Script" id=2]
+
+[sub_resource type="SpriteFrames" id=1]
+animations = [ {
+"frames": [ ExtResource( 1 ) ],
+"loop": true,
+"name": "default",
+"speed": 5.0
+} ]
+
+[sub_resource type="CapsuleShape2D" id=2]
+radius = 16.0
+height = 14.0
+
+[sub_resource type="Animation" id=4]
+resource_name = "Death"
+length = 0.5
+step = 0.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("Animated_Sprite:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2, 0.4 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 0, 0, 1 ), Color( 0, 0, 0, 0 ) ]
+}
+tracks/1/type = "method"
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0.45 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "Despawn"
+} ]
+}
+
+[sub_resource type="Animation" id=3]
+resource_name = "Hurt"
+length = 0.4
+step = 0.2
+tracks/0/type = "value"
+tracks/0/path = NodePath("Animated_Sprite:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2, 0.4 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 0, 0, 1 ), Color( 1, 1, 1, 1 ) ]
+}
+
+[sub_resource type="Animation" id=5]
+resource_name = "Down"
+length = 0.5
+step = 0.5
+tracks/0/type = "value"
+tracks/0/path = NodePath("Animated_Sprite:rotation_degrees")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0.5 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 90.0 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Body_Shape:rotation_degrees")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0.5 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 90.0 ]
+}
+
+[sub_resource type="Animation" id=6]
+resource_name = "Down_Left"
+length = 0.5
+step = 0.5
+tracks/0/type = "value"
+tracks/0/path = NodePath("Animated_Sprite:rotation_degrees")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0.5 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 135.0 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Body_Shape:rotation_degrees")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0.5 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 135.0 ]
+}
+
+[sub_resource type="Animation" id=7]
+resource_name = "Down_Right"
+length = 0.5
+step = 0.5
+tracks/0/type = "value"
+tracks/0/path = NodePath("Animated_Sprite:rotation_degrees")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0.5 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 45.0 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Body_Shape:rotation_degrees")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0.5 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 45.0 ]
+}
+
+[sub_resource type="Animation" id=9]
+resource_name = "Left"
+length = 0.5
+step = 0.5
+tracks/0/type = "value"
+tracks/0/path = NodePath("Animated_Sprite:rotation_degrees")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0.5 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 180.0 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Body_Shape:rotation_degrees")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0.5 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 180.0 ]
+}
+
+[sub_resource type="Animation" id=10]
+resource_name = "Right"
+length = 0.5
+step = 0.5
+tracks/0/type = "value"
+tracks/0/path = NodePath("Animated_Sprite:rotation_degrees")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0.5 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0.0 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Body_Shape:rotation_degrees")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0.5 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0.0 ]
+}
+
+[sub_resource type="Animation" id=8]
+resource_name = "Up"
+length = 0.5
+step = 0.5
+tracks/0/type = "value"
+tracks/0/path = NodePath("Animated_Sprite:rotation_degrees")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0.5 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 270.0 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Body_Shape:rotation_degrees")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0.5 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 270.0 ]
+}
+
+[sub_resource type="Animation" id=12]
+resource_name = "Up_Left"
+length = 0.5
+step = 0.5
+tracks/0/type = "value"
+tracks/0/path = NodePath("Animated_Sprite:rotation_degrees")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0.5 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 225.0 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Body_Shape:rotation_degrees")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0.5 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 225.0 ]
+}
+
+[sub_resource type="Animation" id=11]
+resource_name = "Up_Right"
+length = 0.5
+step = 0.5
+tracks/0/type = "value"
+tracks/0/path = NodePath("Animated_Sprite:rotation_degrees")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0.5 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 315.0 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Body_Shape:rotation_degrees")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0.5 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 315.0 ]
+}
+
+[node name="Zombie" type="Node2D"]
+
+[node name="Enemy_Body" type="KinematicBody2D" parent="."]
+collision_layer = 16
+collision_mask = 23
+script = ExtResource( 2 )
+
+[node name="Animated_Sprite" type="AnimatedSprite" parent="Enemy_Body"]
+rotation = 5.49779
+frames = SubResource( 1 )
+
+[node name="Body_Shape" type="CollisionShape2D" parent="Enemy_Body"]
+rotation = 5.49779
+shape = SubResource( 2 )
+
+[node name="Enemy_Animator" type="AnimationPlayer" parent="Enemy_Body"]
+anims/Death = SubResource( 4 )
+anims/Hurt = SubResource( 3 )
+
+[node name="Enemy_Rotator" type="AnimationPlayer" parent="Enemy_Body"]
+anims/Down = SubResource( 5 )
+anims/Down_Left = SubResource( 6 )
+anims/Down_Right = SubResource( 7 )
+anims/Left = SubResource( 9 )
+anims/Right = SubResource( 10 )
+anims/Up = SubResource( 8 )
+anims/Up_Left = SubResource( 12 )
+anims/Up_Right = SubResource( 11 )
+
+[node name="Navigation_Rays" type="Node2D" parent="Enemy_Body"]
+
+[node name="Up" type="RayCast2D" parent="Enemy_Body/Navigation_Rays"]
+enabled = true
+cast_to = Vector2( 0, -40 )
+collision_mask = 8
+
+[node name="Up-Right" type="RayCast2D" parent="Enemy_Body/Navigation_Rays"]
+enabled = true
+cast_to = Vector2( 30, -30 )
+collision_mask = 8
+
+[node name="Right" type="RayCast2D" parent="Enemy_Body/Navigation_Rays"]
+enabled = true
+cast_to = Vector2( 40, 0 )
+collision_mask = 8
+
+[node name="Down-Right" type="RayCast2D" parent="Enemy_Body/Navigation_Rays"]
+enabled = true
+cast_to = Vector2( 30, 30 )
+collision_mask = 8
+
+[node name="Down" type="RayCast2D" parent="Enemy_Body/Navigation_Rays"]
+enabled = true
+cast_to = Vector2( 0, 40 )
+collision_mask = 8
+
+[node name="Down-Left" type="RayCast2D" parent="Enemy_Body/Navigation_Rays"]
+enabled = true
+cast_to = Vector2( -30, 30 )
+collision_mask = 8
+
+[node name="Left" type="RayCast2D" parent="Enemy_Body/Navigation_Rays"]
+enabled = true
+cast_to = Vector2( -40, 0 )
+collision_mask = 8
+
+[node name="Up-Left" type="RayCast2D" parent="Enemy_Body/Navigation_Rays"]
+enabled = true
+cast_to = Vector2( -30, -30 )
+collision_mask = 8
