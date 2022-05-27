@@ -3,7 +3,7 @@ extends KinematicBody2D
 export var speed = 400
 var motion = Vector2(0,0)
 var aiming = false
-export var bullet_speed = 1000
+export var bullet_speed = 2500
 onready var bullet = load("res://Prefabs/Bullet/Bullet.tscn")
 
 func handle_movement(input):
@@ -55,6 +55,8 @@ func handle_aiming(input):
 		GameManager.add_child(new_bullet)
 		new_bullet.position = Vector2(position.x + shooting_vector.x * 35, position.y +  shooting_vector.y * 35)
 		new_bullet.apply_central_impulse(Vector2(shooting_vector.x * bullet_speed ,shooting_vector.y * bullet_speed))
+		new_bullet.last_velocity =  Vector2(shooting_vector.x * bullet_speed ,shooting_vector.y * bullet_speed)
+		new_bullet.add_torque(rotation)
 		motion = Vector2.ZERO
 		aiming = false
 

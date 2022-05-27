@@ -7,6 +7,7 @@ var second_upgrade = 3
 var third_upgrade = 5
 var fourth_upgrade = 8
 var max_hits = 20
+var last_velocity
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -26,9 +27,13 @@ func upgrade_by_impact():
 
 
 func _on_Bullet_Body_body_entered(body):
+	yield (get_tree(),"idle_frame")
+	last_velocity = linear_velocity
+	
 	if body.has_method("hurt"):
 		body.hurt(damage)
 		if hits >= max_hits:
-			queue_free()
+			pass
+#			queue_free()
 	upgrade_by_impact()
 

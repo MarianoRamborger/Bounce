@@ -18,9 +18,9 @@ config/icon="res://icon.png"
 
 GameManager="*res://Main_and_Managers/Game_Manager.tscn"
 
-[debug]
+[display]
 
-settings/stdout/print_fps=true
+window/stretch/mode="2d"
 
 [input]
 
@@ -57,11 +57,17 @@ Shoot={
 
 [layer_names]
 
+2d_render/layer_1="Player"
+2d_render/layer_2="Enemies"
+2d_render/layer_3="Objects"
+2d_render/layer_4="Floors"
+2d_render/layer_5="Walls"
 2d_physics/layer_1="PlayerBody"
 2d_physics/layer_2="PlayerHitbox"
 2d_physics/layer_3="Bullet"
 2d_physics/layer_4="Walls"
 2d_physics/layer_5="Enemies"
+2d_physics/layer_6="Walls_Bullet"
 
 [physics]
 
