@@ -1,34 +1,51 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=6 format=2]
 
-[ext_resource path="res://Prefabs/Rooms/Environment/Door/tile_499.png" type="Texture" id=1]
+[ext_resource path="res://Prefabs/Rooms/Environment/Door/tile_441.png" type="Texture" id=1]
+[ext_resource path="res://Prefabs/Rooms/Environment/Door/Door.gd" type="Script" id=2]
 
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {
-"frames": [ ExtResource( 1 ) ],
+"frames": [  ],
 "loop": true,
 "name": "Open",
 "speed": 5.0
 }, {
-"frames": [  ],
+"frames": [ ExtResource( 1 ) ],
 "loop": true,
 "name": "Closed",
 "speed": 5.0
 } ]
 
 [sub_resource type="RectangleShape2D" id=2]
-extents = Vector2( 32, 32 )
+extents = Vector2( 47, 14.5 )
+
+[sub_resource type="RectangleShape2D" id=3]
+extents = Vector2( 18.5, 61.5 )
 
 [node name="Door" type="Node2D"]
+script = ExtResource( 2 )
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
+scale = Vector2( 1, 1.5 )
 frames = SubResource( 1 )
-animation = "Open"
+animation = "Closed"
 
-[node name="StaticBody2D" type="StaticBody2D" parent="."]
+[node name="Door_Body" type="StaticBody2D" parent="."]
+collision_layer = 8
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
-position = Vector2( 24, 0 )
+[node name="Door_Body_Area" type="CollisionShape2D" parent="Door_Body"]
+modulate = Color( 1, 0.0352941, 0.0352941, 1 )
+position = Vector2( 0.500002, -2.19345e-05 )
 rotation = 1.5708
 shape = SubResource( 2 )
-disabled = true
 one_way_collision_margin = 50.0
+
+[node name="Back_Area_Detector" type="Area2D" parent="."]
+position = Vector2( -34, -1 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Back_Area_Detector"]
+modulate = Color( 0.133333, 0.882353, 0.0901961, 1 )
+position = Vector2( 4, 0.5 )
+shape = SubResource( 3 )
+
+[connection signal="body_entered" from="Back_Area_Detector" to="." method="_on_Back_Area_Detector_body_entered"]

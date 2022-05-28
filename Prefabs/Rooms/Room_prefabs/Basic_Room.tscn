@@ -130,18 +130,11 @@ collision_mask = 0
 position = Vector2( 1122, -43.0043 )
 shape = SubResource( 6 )
 
-[node name="Door_Left" parent="." index="3" instance=ExtResource( 2 )]
-position = Vector2( 1544, -480 )
-
-[node name="Door_Right" parent="." index="4" instance=ExtResource( 2 )]
-position = Vector2( 56, -480 )
-rotation = 3.14159
-
-[node name="Camera2D" type="Camera2D" parent="." index="5"]
+[node name="Camera2D" type="Camera2D" parent="." index="3"]
 position = Vector2( 800, -480 )
 zoom = Vector2( 1.47, 1.44 )
 
-[node name="Bullets_Walls" type="Node2D" parent="." index="6"]
+[node name="Bullets_Walls" type="Node2D" parent="." index="4"]
 
 [node name="StaticBody2D" type="StaticBody2D" parent="Bullets_Walls" index="0"]
 collision_layer = 32
@@ -151,15 +144,15 @@ collision_mask = 0
 visible = false
 polygon = PoolVector2Array( 0, 0, 0, -960, 1600, -960, 1600, 0, 0, 0, 72, -64, 1536, -64, 1536, -264, 1536, -896, 64, -896, 64, -56 )
 
-[node name="Room_Area" type="Area2D" parent="." index="7"]
+[node name="Room_Area" type="Area2D" parent="." index="5"]
 collision_layer = 0
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Room_Area" index="0"]
+[node name="Entries" type="CollisionShape2D" parent="Room_Area" index="0"]
 visible = false
 position = Vector2( 796, -480 )
 shape = SubResource( 7 )
 
-[node name="Exits_Walls" type="Node2D" parent="." index="8"]
+[node name="Exits_Walls" type="Node2D" parent="." index="6"]
 position = Vector2( 0, -32 )
 
 [node name="RightTop" type="StaticBody2D" parent="Exits_Walls" index="0"]
@@ -236,6 +229,23 @@ collision_mask = 0
 position = Vector2( 1624, -880 )
 rotation = 1.5708
 shape = SubResource( 10 )
+
+[node name="Doors" type="Node2D" parent="." index="7"]
+
+[node name="Door_Left" parent="Doors" index="0" instance=ExtResource( 2 )]
+position = Vector2( 1544, -480 )
+
+[node name="Door_Right" parent="Doors" index="1" instance=ExtResource( 2 )]
+position = Vector2( 56, -480 )
+rotation = 3.14159
+
+[node name="Door_Down" parent="Doors" index="2" instance=ExtResource( 2 )]
+position = Vector2( 800, -56 )
+rotation = 1.5708
+
+[node name="Door_Up" parent="Doors" index="3" instance=ExtResource( 2 )]
+position = Vector2( 800, -904 )
+rotation = 4.71239
 
 [connection signal="body_entered" from="Room_Area" to="." method="_on_Room_Area_body_entered"]
 [connection signal="body_exited" from="Room_Area" to="." method="_on_Room_Area_body_exited"]
